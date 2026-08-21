@@ -1,0 +1,27 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: mydotnetapp
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: mydotnetapp
+
+  template:
+    metadata:
+      labels:
+        app: mydotnetapp
+
+    spec:
+      containers:
+        - name: mydotnetapp
+          image: mydotnetapp:1.0
+
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - containerPort: 8080
